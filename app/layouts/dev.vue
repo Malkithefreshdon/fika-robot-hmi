@@ -2,9 +2,15 @@
 const devAuth = useDevAuth()
 const { unlocked } = devAuth
 const system = useSystemStore()
+const config = useRuntimeConfig()
 
-const connectionLabel = computed(() =>
-  system.backendMode === 'mock' ? 'Supervisor: simulation' : 'Supervisor: connected'
+const connectionLabel = computed(() => {
+  if (system.backendMode === 'mock') return 'Supervisor: simulation'
+  return system.connected ? 'Supervisor: live (connected)' : 'Supervisor: live (disconnected)'
+})
+
+const connectionTitle = computed(() =>
+  system.backendMode === 'live' ? `WebSocket target: ${config.public.backendWsUrl}` : undefined
 )
 </script>
 
@@ -31,6 +37,7 @@ const connectionLabel = computed(() =>
             <span
               class="inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-medium ring-1 ring-inset"
               :class="system.connected ? 'bg-success-500/10 text-success-400 ring-success-500/30' : 'bg-danger-500/10 text-danger-400 ring-danger-500/30'"
+              :title="connectionTitle"
             >
               <span class="h-1.5 w-1.5 rounded-full" :class="system.connected ? 'bg-success-400' : 'bg-danger-400'" />
               {{ connectionLabel }}

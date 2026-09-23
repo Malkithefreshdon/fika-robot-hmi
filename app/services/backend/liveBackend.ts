@@ -1,6 +1,8 @@
 import type { Command, OrderOptions, RobotId, SystemParams } from '~/types'
 import type { SupervisorBackend, SupervisorHandlers } from './types'
 
+const RECONNECT_DELAY_MS = 3000
+
 /**
  * WebSocket bridge to the real Python supervisory controller (WP3).
  *
@@ -19,13 +21,16 @@ import type { SupervisorBackend, SupervisorHandlers } from './types'
  *   { "type": "clear_fault" }
  *   { "type": "update_params", "params": SystemParams }
  *
- * This file is intentionally thin: it only translates transport <-> the
- * same `SupervisorBackend` contract the mock implements, so pages and
- * stores never need to know which backend is active.
+ * See docs/backend-integration-guide.docx for the full field-by-field
+ * reference. This file is intentionally thin: it only translates transport
+ * <-> the same `SupervisorBackend` contract the mock implements, so pages
+ * and stores never need to know which backend is active.
  */
 export function createLiveBackend(url: string): SupervisorBackend {
   let socket: WebSocket | null = null
   let handlers: SupervisorHandlers | null = null
+  let manuallyDisconnected = false
+  let reconnectTimer: ReturnType<typeof setTimeout> | null = null
 
   function send(payload: Record<string, unknown>) {
     if (socket?.readyState === WebSocket.OPEN) {
@@ -35,38 +40,58 @@ export function createLiveBackend(url: string): SupervisorBackend {
     }
   }
 
+  function openSocket() {
+    socket = new WebSocket(url)
+
+    socket.addEventListener('open', () => {
+      handlers?.onLog({ level: 'info', source: 'ws', message: `Connected to supervisor (${url})` })
+      handlers?.onConnectionChange(true)
+    })
+
+    socket.addEventListener('close', () => {
+      handlers?.onConnectionChange(false)
+      if (!manuallyDisconnected) {
+        handlers?.onLog({ level: 'warn', source: 'ws', message: `Supervisor connection lost — retrying in ${RECONNECT_DELAY_MS / 1000}s` })
+        reconnectTimer = setTimeout(openSocket, RECONNECT_DELAY_MS)
+      }
+    })
+
+    socket.addEventListener('error', () => {
+      handlers?.onLog({ level: 'error', source: 'ws', message: `Could not reach supervisor (${url})` })
+    })
+
+    socket.addEventListener('message', (event) => {
+      try {
+        const msg = JSON.parse(event.data)
+        switch (msg.type) {
+          case 'robot_state':
+            handlers?.onRobotState(msg.robot, msg.state)
+            break
+          case 'order_update':
+            handlers?.onOrderUpdate(msg.order)
+            break
+          case 'log':
+            handlers?.onLog({ level: msg.level, source: msg.source, message: msg.message })
+            break
+          default:
+            handlers?.onLog({ level: 'warn', source: 'ws', message: `Unknown message type from supervisor: "${msg.type}"` })
+        }
+      } catch {
+        handlers?.onLog({ level: 'warn', source: 'ws', message: 'Unreadable supervisor message ignored (not valid JSON)' })
+      }
+    })
+  }
+
   return {
     connect(h) {
       handlers = h
-      socket = new WebSocket(url)
-
-      socket.addEventListener('open', () => handlers?.onConnectionChange(true))
-      socket.addEventListener('close', () => handlers?.onConnectionChange(false))
-      socket.addEventListener('error', () => {
-        handlers?.onLog({ level: 'error', source: 'ws', message: `Connexion au superviseur impossible (${url})` })
-      })
-
-      socket.addEventListener('message', (event) => {
-        try {
-          const msg = JSON.parse(event.data)
-          switch (msg.type) {
-            case 'robot_state':
-              handlers?.onRobotState(msg.robot, msg.state)
-              break
-            case 'order_update':
-              handlers?.onOrderUpdate(msg.order)
-              break
-            case 'log':
-              handlers?.onLog({ level: msg.level, source: msg.source, message: msg.message })
-              break
-          }
-        } catch {
-          handlers?.onLog({ level: 'warn', source: 'ws', message: 'Unreadable supervisor message ignored' })
-        }
-      })
+      manuallyDisconnected = false
+      openSocket()
     },
 
     disconnect() {
+      manuallyDisconnected = true
+      if (reconnectTimer) clearTimeout(reconnectTimer)
       socket?.close()
       socket = null
     },
