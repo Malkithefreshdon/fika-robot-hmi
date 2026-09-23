@@ -24,13 +24,13 @@ function exportLogs() {
 <template>
   <div class="flex flex-col gap-5">
     <div class="flex flex-wrap items-center justify-between gap-3">
-      <h1 class="font-[family-name:var(--font-display)] text-2xl font-semibold text-slate-50">Journaux</h1>
+      <h1 class="font-[family-name:var(--font-display)] text-2xl font-semibold text-slate-50">Logs</h1>
       <div class="flex items-center gap-2">
         <button type="button" class="tap-target rounded-lg border border-slate-700 px-3 py-2 text-sm text-slate-300 hover:bg-slate-800" @click="exportLogs">
-          <Icon name="lucide:download" class="mr-1.5 inline h-4 w-4" /> Exporter
+          <Icon name="lucide:download" class="mr-1.5 inline h-4 w-4" /> Export
         </button>
         <button type="button" class="tap-target rounded-lg border border-slate-700 px-3 py-2 text-sm text-slate-300 hover:bg-slate-800" @click="system.clearLogs()">
-          <Icon name="lucide:trash-2" class="mr-1.5 inline h-4 w-4" /> Vider
+          <Icon name="lucide:trash-2" class="mr-1.5 inline h-4 w-4" /> Clear
         </button>
       </div>
     </div>
@@ -44,7 +44,7 @@ function exportLogs() {
         :class="filter === level ? 'bg-accent-500 text-white' : 'bg-slate-800 text-slate-300 hover:bg-slate-700'"
         @click="filter = level"
       >
-        {{ level === 'all' ? 'Tous' : level }}
+        {{ level === 'all' ? 'All' : level }}
       </button>
     </div>
 

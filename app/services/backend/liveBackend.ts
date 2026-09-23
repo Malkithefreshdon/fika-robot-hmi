@@ -31,7 +31,7 @@ export function createLiveBackend(url: string): SupervisorBackend {
     if (socket?.readyState === WebSocket.OPEN) {
       socket.send(JSON.stringify(payload))
     } else {
-      handlers?.onLog({ level: 'error', source: 'ws', message: 'Commande ignorée — superviseur non connecté' })
+      handlers?.onLog({ level: 'error', source: 'ws', message: 'Command ignored — supervisor not connected' })
     }
   }
 
@@ -61,7 +61,7 @@ export function createLiveBackend(url: string): SupervisorBackend {
               break
           }
         } catch {
-          handlers?.onLog({ level: 'warn', source: 'ws', message: 'Message superviseur illisible ignoré' })
+          handlers?.onLog({ level: 'warn', source: 'ws', message: 'Unreadable supervisor message ignored' })
         }
       })
     },

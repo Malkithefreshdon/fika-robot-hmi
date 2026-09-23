@@ -23,19 +23,19 @@ function resumeOrder() {
     <div class="flex flex-col items-center gap-4">
       <span class="text-6xl">☕</span>
       <h1 class="font-[family-name:var(--font-display)] text-4xl font-semibold text-roast-600 sm:text-5xl">
-        Bonjour !
+        {{ $t('home.greeting') }}
       </h1>
-      <p class="text-lg text-roast-500 sm:text-xl">Que puis-je vous servir aujourd'hui ?</p>
+      <p class="text-lg text-roast-500 sm:text-xl">{{ $t('home.subtitle') }}</p>
     </div>
 
     <div v-if="order.isActive" class="w-full max-w-md rounded-3xl bg-white/80 p-6 shadow-card ring-1 ring-roast-500/5">
-      <p class="mb-4 text-roast-600">Vous avez déjà une commande en préparation.</p>
+      <p class="mb-4 text-roast-600">{{ $t('home.resumeMessage') }}</p>
       <button
         type="button"
         class="tap-target w-full rounded-2xl bg-roast-500 px-6 py-4 text-lg font-semibold text-white shadow-card transition hover:bg-roast-600 active:scale-[0.98]"
         @click="resumeOrder"
       >
-        Suivre ma commande
+        {{ $t('home.resumeCta') }}
       </button>
     </div>
 
@@ -46,11 +46,11 @@ function resumeOrder() {
         :disabled="!canOrder"
         @click="startOrder"
       >
-        Commander un café
+        {{ $t('home.orderCta') }}
       </button>
 
       <p v-if="!canOrder" class="max-w-sm text-sm text-danger-600">
-        Le système n'est pas disponible pour le moment. Un membre du personnel a été prévenu — merci de patienter quelques instants.
+        {{ $t('home.unavailable') }}
       </p>
     </template>
   </div>

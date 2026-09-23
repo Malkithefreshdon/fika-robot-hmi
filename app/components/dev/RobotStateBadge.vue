@@ -11,10 +11,10 @@ const styles: Record<RobotState, string> = {
 }
 
 const labels: Record<RobotState, string> = {
-  READY: 'Prêt',
-  BUSY: 'Occupé',
-  DONE: 'Terminé',
-  FAULT: 'Panne'
+  READY: 'Ready',
+  BUSY: 'Busy',
+  DONE: 'Done',
+  FAULT: 'Fault'
 }
 </script>
 

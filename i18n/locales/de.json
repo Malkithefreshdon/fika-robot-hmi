@@ -1,0 +1,63 @@
+{
+  "common": {
+    "appName": "Fika Robot",
+    "back": "Zurück",
+    "devModeAria": "Technikmodus",
+    "status": {
+      "ready": "System bereit",
+      "busy": "Ihre Bestellung wird zubereitet",
+      "fault": "Unterstützung erforderlich",
+      "offline": "Verbindung wird hergestellt…"
+    }
+  },
+  "home": {
+    "greeting": "Hallo!",
+    "subtitle": "Was darf es heute sein?",
+    "orderCta": "Kaffee bestellen",
+    "resumeMessage": "Sie haben bereits eine Bestellung in Zubereitung.",
+    "resumeCta": "Bestellung verfolgen",
+    "unavailable": "Das System ist momentan nicht verfügbar. Das Personal wurde informiert — vielen Dank für Ihre Geduld."
+  },
+  "order": {
+    "title": "Ihr Kaffee, ganz nach Ihrem Geschmack",
+    "glassSizeLabel": "Glasgröße",
+    "sizeSmall": "Klein",
+    "sizeMedium": "Mittel",
+    "sizeLarge": "Groß",
+    "milkTitle": "Milch hinzufügen",
+    "milkDescription": "Der Roboter gießt nach dem Kaffee einen Schuss Milch hinzu",
+    "modeSectionTitle": "Wählen Sie Ihr Zubereitungserlebnis",
+    "modeDefaultName": "Präzision auf der Waage",
+    "modeDefaultTagline": "Empfohlen",
+    "modeDefaultDescription": "Jeder Guss wird live auf einer Präzisionswaage gemessen — für eine genaue Füllung bei jeder Tasse.",
+    "modeStylishName": "Stilvoller Guss",
+    "modeStylishTagline": "Signature-Erlebnis",
+    "modeStylishDescription": "Ein fließender, synchronisierter Guss, schwebend von beiden Robotern ausgeführt — für eine theatralischere Vorführung.",
+    "modeStylishDisclaimer": "Etwas weniger präzise — kleine Abweichungen bei Füllstand oder Timing können gelegentlich vorkommen.",
+    "confirmCta": "Bestellung bestätigen",
+    "unavailable": "Das System ist momentan nicht verfügbar."
+  },
+  "status": {
+    "ticketLabel": "Bestellung",
+    "steps": {
+      "queued": "Bestellung eingegangen",
+      "weighPot": "Kaffeekanne wird gewogen",
+      "placeGlass": "Ihr Glas wird auf die Waage gestellt",
+      "grabItems": "Kanne und Glas werden gegriffen",
+      "pourCoffee": "Kaffee wird eingeschenkt",
+      "pourMilk": "Milch wird hinzugefügt",
+      "deliver": "Wird zu Ihnen gebracht",
+      "ready": "Abholbereit"
+    },
+    "inProgress": "Läuft…",
+    "faultTitle": "Etwas ist nicht nach Plan gelaufen",
+    "faultMessage": "Entschuldigung — ein Mitarbeiter wurde automatisch benachrichtigt und kümmert sich um Ihre Bestellung.",
+    "backHome": "Zurück zum Start",
+    "pickupCta": "Ich habe meine Bestellung abgeholt",
+    "waitMessage": "Einen Moment, Ihr Kaffee ist unterwegs…",
+    "completedTitle": "Genießen Sie Ihren Kaffee!"
+  },
+  "language": {
+    "label": "Sprache"
+  }
+}

@@ -1,28 +1,44 @@
 <script setup lang="ts">
-import type { OrderStage } from '~/types'
+import type { OrderStage, ServingMode } from '~/types'
 
 const props = defineProps<{
   stage: OrderStage
   milk: boolean
+  mode: ServingMode
   faulted: boolean
 }>()
 
+const { t } = useI18n()
+
 interface Step {
   stage: OrderStage
-  label: string
+  labelKey: string
   icon: string
 }
 
-const allSteps: Step[] = [
-  { stage: 'queued', label: 'Commande reçue', icon: 'lucide:clipboard-check' },
-  { stage: 'pick_mug', label: 'Préparation de la tasse', icon: 'lucide:coffee' },
-  { stage: 'pour_coffee', label: 'Versement du café', icon: 'lucide:droplets' },
-  { stage: 'pour_milk', label: 'Ajout du lait', icon: 'lucide:milk' },
-  { stage: 'deliver', label: 'Livraison', icon: 'lucide:hand-platter' },
-  { stage: 'ready', label: 'Prêt à récupérer', icon: 'lucide:party-popper' }
+const defaultModeSteps: Step[] = [
+  { stage: 'queued', labelKey: 'status.steps.queued', icon: 'lucide:clipboard-check' },
+  { stage: 'weigh_pot', labelKey: 'status.steps.weighPot', icon: 'lucide:scale' },
+  { stage: 'place_glass', labelKey: 'status.steps.placeGlass', icon: 'lucide:package-open' },
+  { stage: 'pour_coffee', labelKey: 'status.steps.pourCoffee', icon: 'lucide:droplets' },
+  { stage: 'pour_milk', labelKey: 'status.steps.pourMilk', icon: 'lucide:milk' },
+  { stage: 'deliver', labelKey: 'status.steps.deliver', icon: 'lucide:hand-platter' },
+  { stage: 'ready', labelKey: 'status.steps.ready', icon: 'lucide:party-popper' }
 ]
 
-const steps = computed(() => allSteps.filter((s) => s.stage !== 'pour_milk' || props.milk))
+const stylishModeSteps: Step[] = [
+  { stage: 'queued', labelKey: 'status.steps.queued', icon: 'lucide:clipboard-check' },
+  { stage: 'grab_items', labelKey: 'status.steps.grabItems', icon: 'lucide:hand' },
+  { stage: 'pour_coffee', labelKey: 'status.steps.pourCoffee', icon: 'lucide:droplets' },
+  { stage: 'pour_milk', labelKey: 'status.steps.pourMilk', icon: 'lucide:milk' },
+  { stage: 'deliver', labelKey: 'status.steps.deliver', icon: 'lucide:hand-platter' },
+  { stage: 'ready', labelKey: 'status.steps.ready', icon: 'lucide:party-popper' }
+]
+
+const steps = computed(() => {
+  const base = props.mode === 'stylish' ? stylishModeSteps : defaultModeSteps
+  return base.filter((s) => s.stage !== 'pour_milk' || props.milk)
+})
 
 const currentIndex = computed(() => steps.value.findIndex((s) => s.stage === props.stage))
 
@@ -62,10 +78,10 @@ function status(index: number): 'done' | 'active' | 'upcoming' {
           class="font-medium"
           :class="status(index) === 'upcoming' ? 'text-roast-400/50' : 'text-ink-900'"
         >
-          {{ step.label }}
+          {{ t(step.labelKey) }}
         </p>
-        <p v-if="status(index) === 'active' && !faulted" class="text-sm text-accent-600">En cours…</p>
-        <p v-if="status(index) === 'active' && faulted" class="text-sm text-danger-600">Un imprévu est survenu</p>
+        <p v-if="status(index) === 'active' && !faulted" class="text-sm text-accent-600">{{ t('status.inProgress') }}</p>
+        <p v-if="status(index) === 'active' && faulted" class="text-sm text-danger-600">{{ t('status.faultTitle') }}</p>
       </div>
     </li>
   </ol>

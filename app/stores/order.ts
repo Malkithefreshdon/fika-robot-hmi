@@ -1,9 +1,13 @@
 import { defineStore } from 'pinia'
-import type { CupSize, Order, OrderOptions } from '~/types'
+import { DEFAULT_SERVING_MODE, type CupSize, type Order, type OrderOptions, type ServingMode } from '~/types'
+
+function freshDraft(): OrderOptions {
+  return { size: 'medium', milk: false, mode: DEFAULT_SERVING_MODE }
+}
 
 export const useOrderStore = defineStore('order', {
   state: () => ({
-    draft: { size: 'medium' as CupSize, milk: false } as OrderOptions,
+    draft: freshDraft(),
     current: null as Order | null,
     history: [] as Order[]
   }),
@@ -21,8 +25,12 @@ export const useOrderStore = defineStore('order', {
       this.draft = { ...this.draft, milk }
     },
 
+    setDraftMode(mode: ServingMode) {
+      this.draft = { ...this.draft, mode }
+    },
+
     resetDraft() {
-      this.draft = { size: 'medium', milk: false }
+      this.draft = freshDraft()
     },
 
     confirmOrder() {

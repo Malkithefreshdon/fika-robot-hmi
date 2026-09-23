@@ -1,0 +1,63 @@
+{
+  "common": {
+    "appName": "Fika Robot",
+    "back": "Back",
+    "devModeAria": "Technician mode",
+    "status": {
+      "ready": "System ready",
+      "busy": "Preparing your order",
+      "fault": "Assistance needed",
+      "offline": "Connecting…"
+    }
+  },
+  "home": {
+    "greeting": "Hello!",
+    "subtitle": "What can I serve you today?",
+    "orderCta": "Order a coffee",
+    "resumeMessage": "You already have an order in progress.",
+    "resumeCta": "Track my order",
+    "unavailable": "The system isn't available right now. Staff have been notified — thanks for your patience."
+  },
+  "order": {
+    "title": "Make it yours",
+    "glassSizeLabel": "Glass size",
+    "sizeSmall": "Small",
+    "sizeMedium": "Medium",
+    "sizeLarge": "Large",
+    "milkTitle": "Add milk",
+    "milkDescription": "The robot will pour a splash of milk after the coffee",
+    "modeSectionTitle": "Choose your brewing experience",
+    "modeDefaultName": "Precision Brew",
+    "modeDefaultTagline": "Recommended",
+    "modeDefaultDescription": "Every pour is measured live on a precision scale, so your cup is filled accurately, every time.",
+    "modeStylishName": "Stylish Pour",
+    "modeStylishTagline": "Signature experience",
+    "modeStylishDescription": "A fluid, synchronized pour performed mid-air by both robots for a more theatrical show.",
+    "modeStylishDisclaimer": "A little less precise — small variations in fill level or timing can occasionally happen.",
+    "confirmCta": "Confirm order",
+    "unavailable": "The system isn't available right now."
+  },
+  "status": {
+    "ticketLabel": "Order",
+    "steps": {
+      "queued": "Order received",
+      "weighPot": "Weighing the coffee pot",
+      "placeGlass": "Placing your glass on the scale",
+      "grabItems": "Picking up the pot and your glass",
+      "pourCoffee": "Pouring your coffee",
+      "pourMilk": "Adding milk",
+      "deliver": "Bringing it to you",
+      "ready": "Ready for pickup"
+    },
+    "inProgress": "In progress…",
+    "faultTitle": "Something went off script",
+    "faultMessage": "Our apologies — a staff member has been automatically notified and will take care of your order.",
+    "backHome": "Back to home",
+    "pickupCta": "I've picked up my order",
+    "waitMessage": "Hang tight, your coffee is on its way…",
+    "completedTitle": "Enjoy your coffee!"
+  },
+  "language": {
+    "label": "Language"
+  }
+}

@@ -37,8 +37,8 @@ const digits = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '', '0', 'back']
       <span class="flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-800 text-2xl">
         <Icon name="lucide:lock" class="h-6 w-6 text-accent-400" />
       </span>
-      <h1 class="font-[family-name:var(--font-display)] text-2xl font-semibold">Mode technicien</h1>
-      <p class="max-w-xs text-sm text-slate-300">Réservé au personnel — entrez le code d'accès pour régler et superviser le système.</p>
+      <h1 class="font-[family-name:var(--font-display)] text-2xl font-semibold">Technician mode</h1>
+      <p class="max-w-xs text-sm text-slate-300">Staff only — enter the access code to tune and supervise the system.</p>
     </div>
 
     <div class="mb-6 flex gap-3" :class="{ 'animate-[shake_.3s]': error }">
@@ -49,7 +49,7 @@ const digits = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '', '0', 'back']
         :class="pin.length >= i ? 'border-accent-400 bg-accent-400' : 'border-slate-700'"
       />
     </div>
-    <p v-if="error" class="mb-4 text-sm font-medium text-danger-400">Code incorrect, réessayez.</p>
+    <p v-if="error" class="mb-4 text-sm font-medium text-danger-400">Incorrect code, try again.</p>
 
     <div class="grid grid-cols-3 gap-3">
       <button
@@ -67,7 +67,7 @@ const digits = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '', '0', 'back']
     </div>
 
     <NuxtLink to="/" class="mt-10 text-sm text-slate-400 underline-offset-4 hover:text-slate-200 hover:underline">
-      ← Retour à l'écran client
+      ← Back to customer screen
     </NuxtLink>
   </div>
 </template>

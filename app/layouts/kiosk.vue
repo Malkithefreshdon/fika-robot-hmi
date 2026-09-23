@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const system = useSystemStore()
+const { t } = useI18n()
 
 const statusTone = computed<'ready' | 'busy' | 'fault' | 'offline'>(() => {
   if (!system.connected) return 'offline'
@@ -8,12 +9,7 @@ const statusTone = computed<'ready' | 'busy' | 'fault' | 'offline'>(() => {
   return busy ? 'busy' : 'ready'
 })
 
-const statusLabel = computed(() => ({
-  ready: 'Système prêt',
-  busy: 'Préparation en cours',
-  fault: 'Assistance requise',
-  offline: 'Connexion…'
-}[statusTone.value]))
+const statusLabel = computed(() => t(`common.status.${statusTone.value}`))
 </script>
 
 <template>
@@ -28,9 +24,12 @@ const statusLabel = computed(() => ({
       <header class="flex items-center justify-between px-6 py-5 sm:px-10">
         <NuxtLink to="/" class="flex items-center gap-3">
           <span class="flex h-11 w-11 items-center justify-center rounded-2xl bg-roast-500 text-2xl shadow-card">☕</span>
-          <span class="font-[family-name:var(--font-display)] text-xl font-semibold text-roast-600">Fika Robot</span>
+          <span class="font-[family-name:var(--font-display)] text-xl font-semibold text-roast-600">{{ $t('common.appName') }}</span>
         </NuxtLink>
-        <StatusPill :tone="statusTone" :label="statusLabel" />
+        <div class="flex items-center gap-3">
+          <LanguageSwitcher />
+          <StatusPill :tone="statusTone" :label="statusLabel" />
+        </div>
       </header>
 
       <main class="flex flex-1 flex-col items-center justify-center px-4 pb-24 sm:px-8">
@@ -43,7 +42,7 @@ const statusLabel = computed(() => ({
         to="/dev"
         class="tap-target group fixed bottom-4 right-4 flex items-center justify-center rounded-full bg-white/60 p-3 text-roast-500/50 shadow-sm ring-1 ring-roast-500/10 transition hover:bg-white hover:text-roast-600 hover:opacity-100 sm:bottom-6 sm:right-6"
         style="margin-bottom: env(safe-area-inset-bottom, 0px);"
-        aria-label="Mode technicien"
+        :aria-label="$t('common.devModeAria')"
       >
         <Icon name="lucide:settings" class="h-5 w-5" />
       </NuxtLink>

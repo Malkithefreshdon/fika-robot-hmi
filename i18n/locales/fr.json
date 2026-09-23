@@ -1,0 +1,63 @@
+{
+  "common": {
+    "appName": "Fika Robot",
+    "back": "Retour",
+    "devModeAria": "Mode technicien",
+    "status": {
+      "ready": "Système prêt",
+      "busy": "Préparation en cours",
+      "fault": "Assistance requise",
+      "offline": "Connexion…"
+    }
+  },
+  "home": {
+    "greeting": "Bonjour !",
+    "subtitle": "Que puis-je vous servir aujourd'hui ?",
+    "orderCta": "Commander un café",
+    "resumeMessage": "Vous avez déjà une commande en préparation.",
+    "resumeCta": "Suivre ma commande",
+    "unavailable": "Le système n'est pas disponible pour le moment. Un membre du personnel a été prévenu — merci de patienter quelques instants."
+  },
+  "order": {
+    "title": "Votre café, à votre façon",
+    "glassSizeLabel": "Taille du verre",
+    "sizeSmall": "Petit",
+    "sizeMedium": "Moyen",
+    "sizeLarge": "Grand",
+    "milkTitle": "Ajouter du lait",
+    "milkDescription": "Le robot versera une touche de lait après le café",
+    "modeSectionTitle": "Choisissez votre expérience de préparation",
+    "modeDefaultName": "Précision sur balance",
+    "modeDefaultTagline": "Recommandé",
+    "modeDefaultDescription": "Chaque versement est mesuré en direct sur une balance de précision, pour un remplissage juste à chaque tasse.",
+    "modeStylishName": "Versement Stylé",
+    "modeStylishTagline": "Expérience signature",
+    "modeStylishDescription": "Un versement fluide et synchronisé, réalisé en suspension par les deux robots, pour un spectacle plus théâtral.",
+    "modeStylishDisclaimer": "Un peu moins précis — de légères variations de niveau ou de timing peuvent parfois survenir.",
+    "confirmCta": "Confirmer la commande",
+    "unavailable": "Le système n'est pas disponible pour le moment."
+  },
+  "status": {
+    "ticketLabel": "Commande",
+    "steps": {
+      "queued": "Commande reçue",
+      "weighPot": "Pesée de la cafetière",
+      "placeGlass": "Positionnement du verre sur la balance",
+      "grabItems": "Prise en main de la cafetière et du verre",
+      "pourCoffee": "Versement du café",
+      "pourMilk": "Ajout du lait",
+      "deliver": "Livraison",
+      "ready": "Prêt à récupérer"
+    },
+    "inProgress": "En cours…",
+    "faultTitle": "Un imprévu est survenu",
+    "faultMessage": "Toutes nos excuses — un membre du personnel a été automatiquement averti et va s'occuper de votre commande.",
+    "backHome": "Retour à l'accueil",
+    "pickupCta": "J'ai récupéré ma commande",
+    "waitMessage": "Merci de patienter, votre café arrive…",
+    "completedTitle": "Bonne dégustation !"
+  },
+  "language": {
+    "label": "Langue"
+  }
+}

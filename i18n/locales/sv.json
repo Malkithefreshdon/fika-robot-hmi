@@ -1,0 +1,63 @@
+{
+  "common": {
+    "appName": "Fika Robot",
+    "back": "Tillbaka",
+    "devModeAria": "Teknikerläge",
+    "status": {
+      "ready": "Systemet är redo",
+      "busy": "Din beställning tillagas",
+      "fault": "Assistans behövs",
+      "offline": "Ansluter…"
+    }
+  },
+  "home": {
+    "greeting": "Hej!",
+    "subtitle": "Vad får det lov att vara idag?",
+    "orderCta": "Beställ en kaffe",
+    "resumeMessage": "Du har redan en beställning på gång.",
+    "resumeCta": "Följ min beställning",
+    "unavailable": "Systemet är inte tillgängligt just nu. Personalen har meddelats — tack för ditt tålamod."
+  },
+  "order": {
+    "title": "Din kaffe, på ditt sätt",
+    "glassSizeLabel": "Glasstorlek",
+    "sizeSmall": "Liten",
+    "sizeMedium": "Mellan",
+    "sizeLarge": "Stor",
+    "milkTitle": "Lägg till mjölk",
+    "milkDescription": "Roboten häller i en skvätt mjölk efter kaffet",
+    "modeSectionTitle": "Välj din bryggupplevelse",
+    "modeDefaultName": "Precision på våg",
+    "modeDefaultTagline": "Rekommenderas",
+    "modeDefaultDescription": "Varje hällning mäts i realtid på en precisionsvåg, så din kopp fylls exakt rätt varje gång.",
+    "modeStylishName": "Stilig hällning",
+    "modeStylishTagline": "Signaturupplevelse",
+    "modeStylishDescription": "En flytande, synkroniserad hällning som utförs svävande av båda robotarna — för en mer teatralisk show.",
+    "modeStylishDisclaimer": "Något mindre exakt — små variationer i fyllnadsnivå eller timing kan ibland förekomma.",
+    "confirmCta": "Bekräfta beställning",
+    "unavailable": "Systemet är inte tillgängligt just nu."
+  },
+  "status": {
+    "ticketLabel": "Beställning",
+    "steps": {
+      "queued": "Beställning mottagen",
+      "weighPot": "Väger kaffekannan",
+      "placeGlass": "Placerar ditt glas på vågen",
+      "grabItems": "Tar kannan och ditt glas",
+      "pourCoffee": "Häller upp ditt kaffe",
+      "pourMilk": "Lägger till mjölk",
+      "deliver": "Serverar din beställning",
+      "ready": "Klar för avhämtning"
+    },
+    "inProgress": "Pågår…",
+    "faultTitle": "Något gick inte som planerat",
+    "faultMessage": "Vi ber om ursäkt — personalen har automatiskt meddelats och tar hand om din beställning.",
+    "backHome": "Tillbaka till start",
+    "pickupCta": "Jag har hämtat min beställning",
+    "waitMessage": "Ett ögonblick, ditt kaffe är på väg…",
+    "completedTitle": "Smaklig fika!"
+  },
+  "language": {
+    "label": "Språk"
+  }
+}

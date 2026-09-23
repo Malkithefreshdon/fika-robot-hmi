@@ -1,0 +1,63 @@
+{
+  "common": {
+    "appName": "Fika Robot",
+    "back": "Volver",
+    "devModeAria": "Modo técnico",
+    "status": {
+      "ready": "Sistema listo",
+      "busy": "Preparando su pedido",
+      "fault": "Se requiere asistencia",
+      "offline": "Conectando…"
+    }
+  },
+  "home": {
+    "greeting": "¡Hola!",
+    "subtitle": "¿Qué le puedo servir hoy?",
+    "orderCta": "Pedir un café",
+    "resumeMessage": "Ya tiene un pedido en preparación.",
+    "resumeCta": "Seguir mi pedido",
+    "unavailable": "El sistema no está disponible en este momento. Se ha avisado al personal — gracias por su paciencia."
+  },
+  "order": {
+    "title": "Su café, a su manera",
+    "glassSizeLabel": "Tamaño del vaso",
+    "sizeSmall": "Pequeño",
+    "sizeMedium": "Mediano",
+    "sizeLarge": "Grande",
+    "milkTitle": "Añadir leche",
+    "milkDescription": "El robot añadirá un toque de leche después del café",
+    "modeSectionTitle": "Elija su experiencia de preparación",
+    "modeDefaultName": "Precisión en báscula",
+    "modeDefaultTagline": "Recomendado",
+    "modeDefaultDescription": "Cada vertido se mide en tiempo real con una báscula de precisión, para un llenado exacto en cada taza.",
+    "modeStylishName": "Vertido con Estilo",
+    "modeStylishTagline": "Experiencia exclusiva",
+    "modeStylishDescription": "Un vertido fluido y sincronizado, realizado en suspensión por ambos robots, para un espectáculo más teatral.",
+    "modeStylishDisclaimer": "Un poco menos preciso — ocasionalmente pueden darse pequeñas variaciones de nivel o de tiempo.",
+    "confirmCta": "Confirmar pedido",
+    "unavailable": "El sistema no está disponible en este momento."
+  },
+  "status": {
+    "ticketLabel": "Pedido",
+    "steps": {
+      "queued": "Pedido recibido",
+      "weighPot": "Pesando la cafetera",
+      "placeGlass": "Colocando su vaso en la báscula",
+      "grabItems": "Tomando la cafetera y su vaso",
+      "pourCoffee": "Sirviendo su café",
+      "pourMilk": "Añadiendo leche",
+      "deliver": "Entregando su pedido",
+      "ready": "Listo para recoger"
+    },
+    "inProgress": "En curso…",
+    "faultTitle": "Algo no salió como estaba previsto",
+    "faultMessage": "Nuestras disculpas — se ha avisado automáticamente a un miembro del personal, que se ocupará de su pedido.",
+    "backHome": "Volver al inicio",
+    "pickupCta": "He recogido mi pedido",
+    "waitMessage": "Un momento, su café está en camino…",
+    "completedTitle": "¡Que disfrute su café!"
+  },
+  "language": {
+    "label": "Idioma"
+  }
+}

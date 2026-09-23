@@ -14,8 +14,25 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@vueuse/nuxt',
     '@nuxt/icon',
-    '@nuxt/fonts'
+    '@nuxt/fonts',
+    '@nuxtjs/i18n'
   ],
+
+  // Customer-facing kiosk screens are translated; the technician (/dev)
+  // screens are intentionally English-only, so they don't use $t() at all.
+  i18n: {
+    defaultLocale: 'sv',
+    strategy: 'no_prefix',
+    detectBrowserLanguage: false,
+    langDir: 'locales',
+    locales: [
+      { code: 'sv', name: 'Svenska', file: 'sv.json' },
+      { code: 'en', name: 'English', file: 'en.json' },
+      { code: 'es', name: 'Español', file: 'es.json' },
+      { code: 'de', name: 'Deutsch', file: 'de.json' },
+      { code: 'fr', name: 'Français', file: 'fr.json' }
+    ]
+  },
 
   css: ['~/assets/css/main.css'],
 
@@ -47,7 +64,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: 'Fika Robot — Système de service de café',
+      title: 'Fika Robot — Coffee Serving System',
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1' },
         { name: 'theme-color', content: '#6F4E37' }

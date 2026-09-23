@@ -4,7 +4,7 @@ const { unlocked } = devAuth
 const system = useSystemStore()
 
 const connectionLabel = computed(() =>
-  system.backendMode === 'mock' ? 'Superviseur : simulation' : 'Superviseur : connecté'
+  system.backendMode === 'mock' ? 'Supervisor: simulation' : 'Supervisor: connected'
 )
 </script>
 
@@ -19,7 +19,7 @@ const connectionLabel = computed(() =>
           <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-roast-500 text-lg">☕</span>
           <div>
             <p class="font-[family-name:var(--font-display)] text-sm font-semibold leading-tight">Fika Robot</p>
-            <p class="text-xs text-slate-400">Mode technicien</p>
+            <p class="text-xs text-slate-400">Technician mode</p>
           </div>
         </div>
         <DevNav />
@@ -39,7 +39,7 @@ const connectionLabel = computed(() =>
               v-if="system.anyFault"
               class="inline-flex items-center gap-2 rounded-full bg-danger-500/10 px-3 py-1 text-xs font-medium text-danger-400 ring-1 ring-inset ring-danger-500/30"
             >
-              <Icon name="lucide:alert-triangle" class="h-3.5 w-3.5" /> Panne active
+              <Icon name="lucide:alert-triangle" class="h-3.5 w-3.5" /> Fault active
             </span>
           </div>
 
@@ -48,14 +48,14 @@ const connectionLabel = computed(() =>
               to="/"
               class="tap-target inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-300 hover:bg-slate-800 hover:text-slate-100"
             >
-              <Icon name="lucide:monitor" class="h-4 w-4" /> Écran client
+              <Icon name="lucide:monitor" class="h-4 w-4" /> Customer screen
             </NuxtLink>
             <button
               type="button"
               class="tap-target inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-300 hover:bg-slate-800 hover:text-slate-100"
               @click="devAuth.lock()"
             >
-              <Icon name="lucide:lock" class="h-4 w-4" /> Verrouiller
+              <Icon name="lucide:lock" class="h-4 w-4" /> Lock
             </button>
           </div>
         </header>

@@ -18,6 +18,7 @@ function loadPersistedParams(): SystemParams {
       ...parsed,
       robots: { ...structuredClone(DEFAULT_SYSTEM_PARAMS.robots), ...parsed.robots },
       sequence: { ...structuredClone(DEFAULT_SYSTEM_PARAMS.sequence), ...parsed.sequence },
+      dosing: { ...structuredClone(DEFAULT_SYSTEM_PARAMS.dosing), ...parsed.dosing },
       vision: { ...structuredClone(DEFAULT_SYSTEM_PARAMS.vision), ...parsed.vision },
       communication: { ...structuredClone(DEFAULT_SYSTEM_PARAMS.communication), ...parsed.communication },
       simulation: { ...structuredClone(DEFAULT_SYSTEM_PARAMS.simulation), ...parsed.simulation }
@@ -121,7 +122,7 @@ export const useSystemStore = defineStore('system', {
       this.params = structuredClone(DEFAULT_SYSTEM_PARAMS)
       this.persistParams()
       this._backend?.updateParams(this.params)
-      this.pushLog({ level: 'warn', source: 'dev-mode', message: 'Paramètres réinitialisés aux valeurs par défaut' })
+      this.pushLog({ level: 'warn', source: 'dev-mode', message: 'Parameters reset to defaults' })
     }
   }
 })

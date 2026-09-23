@@ -39,10 +39,10 @@ function backToStart() {
       </span>
       <div>
         <h1 class="font-[family-name:var(--font-display)] text-2xl font-semibold text-roast-600">
-          Un imprévu est survenu
+          {{ $t('status.faultTitle') }}
         </h1>
         <p class="mt-2 max-w-md text-roast-500">
-          Toutes nos excuses — un membre du personnel a été automatiquement averti et va s'occuper de votre commande.
+          {{ $t('status.faultMessage') }}
         </p>
       </div>
       <button
@@ -50,7 +50,7 @@ function backToStart() {
         class="tap-target rounded-2xl bg-roast-500 px-8 py-4 text-lg font-semibold text-white shadow-card transition hover:bg-roast-600"
         @click="backToStart"
       >
-        Retour à l'accueil
+        {{ $t('status.backHome') }}
       </button>
     </template>
 
@@ -58,21 +58,26 @@ function backToStart() {
     <template v-else-if="order.current.stage === 'completed'">
       <span class="text-6xl">🎉</span>
       <h1 class="font-[family-name:var(--font-display)] text-2xl font-semibold text-roast-600">
-        Bonne dégustation !
+        {{ $t('status.completedTitle') }}
       </h1>
     </template>
 
     <!-- In progress / ready -->
     <template v-else>
       <div>
-        <p class="text-sm font-medium uppercase tracking-wide text-roast-400">Commande</p>
+        <p class="text-sm font-medium uppercase tracking-wide text-roast-400">{{ $t('status.ticketLabel') }}</p>
         <p class="font-[family-name:var(--font-display)] text-3xl font-semibold text-roast-600">
           #{{ order.current.ticketNumber }}
         </p>
       </div>
 
       <div class="w-full max-w-md rounded-3xl bg-white/80 p-6 text-left shadow-card">
-        <ProgressTracker :stage="order.current.stage" :milk="order.current.options.milk" :faulted="false" />
+        <ProgressTracker
+          :stage="order.current.stage"
+          :milk="order.current.options.milk"
+          :mode="order.current.options.mode"
+          :faulted="false"
+        />
       </div>
 
       <button
@@ -81,9 +86,9 @@ function backToStart() {
         class="tap-target w-full max-w-md rounded-2xl bg-success-500 px-8 py-5 text-xl font-semibold text-white shadow-kiosk transition hover:bg-success-600 active:scale-[0.98]"
         @click="pickup"
       >
-        ✓ J'ai récupéré ma commande
+        ✓ {{ $t('status.pickupCta') }}
       </button>
-      <p v-else class="text-roast-400">Merci de patienter, votre café arrive…</p>
+      <p v-else class="text-roast-400">{{ $t('status.waitMessage') }}</p>
     </template>
   </div>
 </template>

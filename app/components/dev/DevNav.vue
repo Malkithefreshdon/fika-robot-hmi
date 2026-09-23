@@ -1,8 +1,8 @@
 <script setup lang="ts">
 const links = [
-  { to: '/dev', label: 'Tableau de bord', icon: 'lucide:layout-dashboard' },
-  { to: '/dev/tuning', label: 'Réglages fins', icon: 'lucide:sliders-horizontal' },
-  { to: '/dev/logs', label: 'Journaux', icon: 'lucide:scroll-text' }
+  { to: '/dev', label: 'Dashboard', icon: 'lucide:layout-dashboard' },
+  { to: '/dev/tuning', label: 'Tuning', icon: 'lucide:sliders-horizontal' },
+  { to: '/dev/logs', label: 'Logs', icon: 'lucide:scroll-text' }
 ]
 </script>
 
