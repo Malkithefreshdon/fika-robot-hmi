@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens — "chaleureux mais fonctionnel" (warm coffeehouse palette).
+ * Kiosk screens lean on the warm tones; dev/tuning screens reuse the same
+ * palette but favour the neutral + mono tones so dense data stays readable.
+ */
+@theme {
+  --font-display: "Fredoka", "system-ui", sans-serif;
+  --font-body: "Inter", "system-ui", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --color-cream-50: #fffdfa;
+  --color-cream-100: #faf3e8;
+  --color-cream-200: #f0e4d3;
+  --color-cream-300: #e6d3b8;
+
+  --color-latte-300: #d8b48c;
+  --color-latte-400: #c69c6d;
+
+  --color-roast-400: #8b6b4f;
+  --color-roast-500: #6f4e37;
+  --color-roast-600: #543a29;
+  --color-roast-700: #3b2a20;
+
+  --color-accent-300: #f0a870;
+  --color-accent-400: #e69257;
+  --color-accent-500: #e07a3e;
+  --color-accent-600: #c4632b;
+  --color-accent-700: #a34f21;
+
+  --color-success-400: #6bb389;
+  --color-success-500: #4f9a6d;
+  --color-success-600: #3d7d56;
+
+  --color-warning-400: #f0c05a;
+  --color-warning-500: #e0a83e;
+  --color-warning-600: #c08a26;
+
+  --color-danger-400: #d97463;
+  --color-danger-500: #c1503d;
+  --color-danger-600: #a13d2d;
+
+  --color-ink-900: #241a14;
+  --color-ink-700: #453629;
+
+  /* Dev-mode neutrals: same warm hue family, desaturated for long reading */
+  --color-slate-925: #17140f;
+  --color-slate-900: #211c16;
+  --color-slate-850: #2a241c;
+  --color-slate-800: #362e24;
+  --color-slate-700: #4a4033;
+  --color-slate-500: #7c7261;
+  --color-slate-300: #b8ad9b;
+  --color-slate-100: #e8e2d6;
+
+  --shadow-kiosk: 0 20px 40px -12px rgb(111 78 55 / 0.25);
+  --shadow-card: 0 2px 8px -2px rgb(111 78 55 / 0.12), 0 8px 24px -8px rgb(111 78 55 / 0.1);
+}
+
+html {
+  overscroll-behavior: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-ink-900);
+  background: var(--color-cream-100);
+}
+
+/* Kiosk targets must stay comfortably tappable on tablets. */
+.tap-target {
+  min-height: 64px;
+  min-width: 64px;
+}
+
+::selection {
+  background: var(--color-accent-300);
+  color: var(--color-ink-900);
+}
+
+/* Custom scrollbar for the dev-mode log feed / dense panels */
+.scrollbar-warm::-webkit-scrollbar {
+  width: 8px;
+}
+.scrollbar-warm::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollbar-warm::-webkit-scrollbar-thumb {
+  background: var(--color-slate-700);
+  border-radius: 999px;
+}
